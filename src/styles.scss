@@ -9,3 +9,6 @@ html {
   height: 100vh;//definino uma altura padrão para a página
   background-color: #b4b4b8;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
