@@ -1,8 +1,6 @@
 # scheduEase-angular-front-end-
 Front End desenvolvido como trabalho final da disciplina de Angular do curso +Devs2blu.
 
-# ScheduEaseAngularFrontEnd
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
 
 ## Development server
