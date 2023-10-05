@@ -6,13 +6,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
-
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule,
+    NgbAlertModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
@@ -22,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
   exports: [
     MatButtonModule,
     MatFormFieldModule,
+    NgbAlertModule,
     MatInputModule,
     MatCardModule,
     MatSelectModule,

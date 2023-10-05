@@ -6,6 +6,7 @@ import { HeaderModule } from './components/header/header.module';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HeaderModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
