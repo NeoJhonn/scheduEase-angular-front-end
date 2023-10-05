@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateEmployeeComponent } from './create-employee.component';
 import { CreateEmployeeRoutingModule } from './create-employee.routing.modules';
+import { DesignImportsModule } from 'src/app/shared/design-imports/design-imports.module';
 
 
 
@@ -11,7 +12,8 @@ import { CreateEmployeeRoutingModule } from './create-employee.routing.modules';
   ],
   imports: [
     CommonModule,
-    CreateEmployeeRoutingModule
+    CreateEmployeeRoutingModule,
+    DesignImportsModule
   ]
 })
 export class CreateEmployeeModule { }
