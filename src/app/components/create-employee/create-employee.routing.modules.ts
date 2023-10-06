@@ -11,7 +11,9 @@ const routes: Routes = [
 
 // Principal arquivo de roteamento
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forChild(routes)
+  ],
   exports: [RouterModule]
 })
 export class CreateEmployeeRoutingModule { }

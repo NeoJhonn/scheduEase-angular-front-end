@@ -14,7 +14,7 @@ export class AppComponent implements OnInit{
   // É uma função específica do Angular
   // ela carrega primeiro ao carregar a tela
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
   }
 
 }
