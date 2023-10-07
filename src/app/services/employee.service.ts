@@ -33,4 +33,30 @@ export class EmployeeService {
         }
       });
   }
+
+  updateEmployee(employee: any = {}): void {
+    this.http.put(this.apiUrl, employee).subscribe({
+      next: (response) => {
+        console.log('Funcionário atualizado com sucesso:', response);
+        // Redirecionar para a lista de funcionários
+        this.router.navigate(['/employee']);
+      },
+      error: (error) => {
+        console.error('Erro ao atualizar funcionário:', error);
+      }
+    });
+  }
+
+  deleteEmployee(id: number): void {
+    this.http.delete(`${this.apiUrl}/${id}`).subscribe({
+      next: (response) => {
+        console.log('Funcionário excluído com sucesso:', response);
+        // Atualiza a página de funcionários
+        window.location.href = '/employee';
+      },
+      error: (error) => {
+        console.error('Erro ao excluir funcionário:', error);
+      }
+    });
+  }
 }

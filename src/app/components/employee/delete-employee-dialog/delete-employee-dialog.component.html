@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Excluir Funcionáro?</h1>
+<div mat-dialog-content>
+  <ul>
+    <li>
+      Id: {{data.id}}
+    </li>
+    <li>
+      Nome: {{data.name}}
+    </li>
+    <li>
+      Cargo: {{data.role}}
+    </li>
+    <li>
+      <button mat-raised-button color="warn" class="m-lg-2" (click)="deleteEmployee(data.id)">Excluir</button>
+      <button mat-raised-button color="primary" (click)="closeDialog()">Cancelar</button>
+    </li>
+  </ul>
+</div>
