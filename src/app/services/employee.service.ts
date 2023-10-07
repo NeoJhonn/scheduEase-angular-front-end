@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'any'
 })
-export class CreateEmployeeService {
+export class EmployeeService {
+  // Api que será consumida
   private apiUrl = 'https://scheduease-production.up.railway.app/api/employees';
-  employee: any = {};
-  
 
-  constructor(private http: HttpClient) {
-    
+
+  constructor(private http: HttpClient, private router: Router) {
+
   }
 
 
@@ -24,6 +25,8 @@ export class CreateEmployeeService {
       .subscribe({
         next: (response) => {
           console.log('Funcionário cadastrado com sucesso:', response);
+          // Redirecionar para a página Funcionário após o cadastro
+          this.router.navigate(['/employee']);
         },
         error: (error) => {
           console.error('Erro ao cadastrar funcionário:', error);

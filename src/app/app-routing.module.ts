@@ -14,9 +14,9 @@ const routes: Routes = [
   },
   // 3 - criar a rota de Create Employee
   // defino rota e defino componente
-  {path: 'create-employee',
+  {path: 'employee',
     loadChildren: () =>
-    import('./components/create-employee/create-employee.module').then((m) => m.CreateEmployeeModule)
+    import('./components/employee/employee.module').then((m) => m.EmployeeModule)
   },
   // 4 - criar a rota de Schedule
   // defino rota e defino componente
