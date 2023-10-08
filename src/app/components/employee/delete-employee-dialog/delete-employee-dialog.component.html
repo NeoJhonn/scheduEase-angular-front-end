@@ -2,7 +2,7 @@
 <div mat-dialog-content class="d-flex">
   <ul>
     <li>
-      <p>Id: {{data.id}}</p>
+      Id: {{data.id}}
     </li>
     <li>
       Nome: {{data.name}}
@@ -10,7 +10,7 @@
     <li>
       Cargo: {{data.role}}
     </li>
-    <li mat-dialog-actions>
+    <li>
       <button mat-raised-button color="warn" class="m-lg-2" (click)="deleteEmployee(data.id)">Excluir</button>
       <button mat-raised-button color="primary" (click)="closeDialog()">Cancelar</button>
     </li>
