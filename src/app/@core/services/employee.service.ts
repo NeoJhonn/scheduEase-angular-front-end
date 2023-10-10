@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Employee } from '../models/employee.model';
+import { Urls } from '../url';
 
 @Injectable({
   providedIn: 'any'
 })
 export class EmployeeService {
   // Api que será consumida
-  private apiUrl = 'https://scheduease-production.up.railway.app/api/employees';
+  private apiUrl = Urls.EMPLOYEE_BACK;
 
 
   constructor(private http: HttpClient, private router: Router) {
@@ -16,11 +18,11 @@ export class EmployeeService {
   }
 
 
-  listEmployees(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/list-all`);
+  listEmployees(): Observable<Employee> {
+    return this.http.get<Employee>(`${this.apiUrl}/list-all`);
   }
 
-  createEmployee(employee: any = {}): void {
+  createEmployee(employee: Employee): void {
     this.http.post(this.apiUrl, employee)
       .subscribe({
         next: (response) => {
@@ -34,7 +36,7 @@ export class EmployeeService {
       });
   }
 
-  updateEmployee(employee: any = {}): void {
+  updateEmployee(employee: Employee): void {
     this.http.put(this.apiUrl, employee).subscribe({
       next: (response) => {
         console.log('Funcionário atualizado com sucesso:', response);

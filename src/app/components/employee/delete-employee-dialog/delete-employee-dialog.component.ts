@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { EmployeeService } from 'src/app/services/employee.service';
+import { EmployeeService } from 'src/app/@core/services/employee.service';
 
 
 export interface Employee {

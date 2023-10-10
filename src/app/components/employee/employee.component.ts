@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from 'src/app/services/employee.service';
+import { EmployeeService } from 'src/app/@core/services/employee.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteEmployeeDialogComponent } from './delete-employee-dialog/delete-employee-dialog.component';
+import { Employee } from 'src/app/@core/models/employee.model';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   // Redireciona para a página de update
-  updateEmployee(element: any): void {
+  updateEmployee(element: Employee): void {
     // Pega os parâmetros do elemento que vai ser editado
     const params ={
       id: element.id,
