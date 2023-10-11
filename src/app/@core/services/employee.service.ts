@@ -18,8 +18,8 @@ export class EmployeeService {
   }
 
 
-  listEmployees(): Observable<Employee> {
-    return this.http.get<Employee>(`${this.apiUrl}/list-all`);
+  listEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.apiUrl}/list-all`);
   }
 
   createEmployee(employee: Employee): void {

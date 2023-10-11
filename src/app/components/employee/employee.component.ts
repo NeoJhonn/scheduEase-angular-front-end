@@ -15,7 +15,7 @@ export class EmployeeComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'role', 'action'];
 
   // Lista de funcionários cadastrados do servidor em produção
-  public employeeList: any;
+  public employeeList: Employee[] = [];
 
 
   constructor(private service: EmployeeService, private router: Router, public dialog: MatDialog) { }
@@ -51,7 +51,7 @@ export class EmployeeComponent implements OnInit {
   }
 
    // Abri caixa de diálogo
-  openDialog(element: any = {}): void {
+  openDialog(element: Employee): void {
     // Pega os atributos do elemento e injeta na caixa de diálogo
     this.dialog.open(DeleteEmployeeDialogComponent, {
 

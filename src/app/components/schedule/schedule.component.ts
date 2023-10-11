@@ -10,25 +10,25 @@ const ELEMENT_DATA: Schedule[] = [
     serviceBooked: 'mechas',
     appointmentDate: '2023-10-09',
     startTime: '9:00',
-    endTime: 'H_11_30'
+    endTime: '10:30'
   },
   {
     id: 1,
-    clientName: 'João da Sila',
+    clientName: 'João da Silva',
     employeeId: 1,
     serviceBooked: 'corte',
     appointmentDate: '2023-10-09',
     startTime: '16:00',
-    endTime: 'H_11_30'
+    endTime: '17:00'
   },
   {
     id: 1,
-    clientName: 'Amanda',
+    clientName: 'Amanda Nothen',
     employeeId: 1,
     serviceBooked: 'hidratação',
     appointmentDate: '2023-10-09',
     startTime: '11:00',
-    endTime: 'H_11_30'
+    endTime: '11:30'
   }
 
 ];
