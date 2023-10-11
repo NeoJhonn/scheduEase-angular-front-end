@@ -55,6 +55,24 @@ export class ScheduleComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.listFreeHours();
+
+  }
+
+  listFreeHours(): String[] {
+    var freeHours: String[] = this.timeGrid;
+    let index: number = 0
+
+    for (let hour of this.timeGrid) {
+      for (let element of this.elements) {
+        if (hour === element.startTime) {
+            index = this.timeGrid.indexOf(hour);  
+            freeHours = freeHours.filter(item => item !== hour);          
+        }
+        }
+    }
+    console.log(freeHours);
+    return freeHours;
   }
 
 }

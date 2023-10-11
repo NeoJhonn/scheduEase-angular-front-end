@@ -17,15 +17,15 @@
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
-  <!-- Position Column -->
+  <!-- Coluna Horário -->
   <ng-container matColumnDef="time">
     <th mat-header-cell *matHeaderCellDef class="text-center"> Horário </th>
     <td mat-cell *matCellDef="let hour" class="text-center" > {{ hour }} </td>
   </ng-container>
 
-  <!-- Name Column -->
+  <!-- Coluna Nome -->
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef class="text-center"> Cliente </th><!-- Percorrendo a lista de horários -->
+    <th mat-header-cell *matHeaderCellDef class="text-center"> Cliente </th>
     <td mat-cell *matCellDef="let hour" class="text-center" >
       <span *ngFor="let element of elements">
         <span *ngIf="hour == element.startTime">
@@ -35,9 +35,9 @@
     </td>
   </ng-container>
 
-  <!-- Weight Column -->
+  <!-- Coluna Serviço -->
   <ng-container matColumnDef="service">
-    <th mat-header-cell *matHeaderCellDef class="text-center"> Seviço </th><!-- Percorrendo a lista de horários -->
+    <th mat-header-cell *matHeaderCellDef class="text-center"> Seviço </th>
     <td mat-cell *matCellDef="let hour" class="text-center">
       <span *ngFor="let element of elements">
         <span *ngIf="hour === element.startTime">
@@ -47,11 +47,11 @@
     </td>
   </ng-container>
 
-  <!-- Symbol Column -->
+  <!-- Coluna Ação -->
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef class="text-center"> Ação </th>
 
-
+    <span *ngFor="let element of elements">
       <td mat-cell *matCellDef="let hour" class="text-center">
         <span *ngFor="let element of elements">
           <span *ngIf="hour === element.startTime">
@@ -60,6 +60,7 @@
           </span>
         </span>
       </td>
+    </span>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
