@@ -10,25 +10,25 @@ const ELEMENT_DATA: Schedule[] = [
     serviceBooked: 'mechas',
     appointmentDate: '2023-10-09',
     startTime: '9:00',
-    endTime: '10:30'
+    endTime: '11:30'
   },
   {
     id: 1,
-    clientName: 'João da Silva',
+    clientName: 'José Figueredo',
     employeeId: 1,
     serviceBooked: 'corte',
     appointmentDate: '2023-10-09',
-    startTime: '16:00',
-    endTime: '17:00'
+    startTime: '13:30',
+    endTime: '14:00'
   },
   {
     id: 1,
-    clientName: 'Amanda Nothen',
+    clientName: 'Rosana souza',
     employeeId: 1,
-    serviceBooked: 'hidratação',
+    serviceBooked: 'botox',
     appointmentDate: '2023-10-09',
-    startTime: '11:00',
-    endTime: '11:30'
+    startTime: '17:00',
+    endTime: '19:30'
   }
 
 ];
@@ -59,18 +59,41 @@ export class ScheduleComponent implements OnInit {
 
   }
 
-  isFree(hour: string): boolean{
-    var freeHours: String[] = this.timeGrid;
+  isFree(hour: string, elements: Schedule[]): boolean{
     let isFree: boolean = true;
+    let intervals: String[] = [];
+   
+    let indexS: number = -1;
+    let indexE: number = -1;
 
-    for (let element of this.elements) {
-      if (hour === element.startTime || hour === element.endTime) {
-          isFree = false;
-          break;
+    for (let el of elements) {
+      if (hour !== el.startTime){
+        indexS = this.timeGrid.indexOf(el.startTime);
+        indexE = this.timeGrid.indexOf(el.endTime);
       }
-  }
+    }
+
+
+    
+
+    console.log(indexS);
+    console.log(indexE);
+    for (let i= indexS; i <= indexE; i++) {
+      intervals.push(this.timeGrid[i]);
+    }
+
+    for (let h of intervals) {
+      if (this.timeGrid.indexOf(hour) === this.timeGrid.indexOf(h)) {
+        isFree = false;
+      }
+    }
+
+    console.log(intervals);
+    
 
     return isFree;
   }
+
+  
 
 }

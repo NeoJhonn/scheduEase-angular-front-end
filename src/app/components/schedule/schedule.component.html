@@ -56,23 +56,23 @@
   </ng-container>
 
   <!-- Coluna Ação -->
+  
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef class="text-center"> Ação </th>
-
-
       <td mat-cell *matCellDef="let hour" class="text-center">
         <span *ngFor="let element of elements">
           <span *ngIf="hour === element.startTime">
             <button mat-flat-button color="primary" class="m-lg-2" >Editar</button>
             <button mat-flat-button color="warn" >Excluir</button>
           </span>
+
         </span>
-        <span *ngIf="isFree(hour)">
-          <button mat-flat-button color="accent" class="m-lg-2">Agendar</button>
+        <span *ngIf="isFree(hour, elements)">
+          <button  mat-flat-button color="accent" class="m-lg-2">Agendar</button>
         </span>
       </td>
-
   </ng-container>
+  
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
