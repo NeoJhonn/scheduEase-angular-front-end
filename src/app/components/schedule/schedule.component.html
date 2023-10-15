@@ -3,11 +3,19 @@
 <!-- DatePicker -->
 <mat-form-field class="d-flex justify-content-center">
   <mat-label>Selecione uma Data</mat-label>
-  <input matInput [matDatepicker]="picker">
+  <input matInput [matDatepicker]="picker" [(ngModel)]="date" (dateChange)="listAppointments(1)">
   <mat-hint>Mês/Dia/Ano</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
+
+<form class="m-auto w-25">
+
+  <label for="date-picker"  class="control-label fs-5 mt-4">Selecione uma Data</label>
+  <input type="date" [(ngModel)]="date" class="form-control" id="date-picker" name="date"  (change)="listAppointments(1)"/>
+
+</form>
+
 
 
 
@@ -27,12 +35,12 @@
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef class="text-center"> Cliente </th>
     <td mat-cell *matCellDef="let hour" class="text-center" >
-      <span *ngFor="let element of elements">
-        <span *ngIf="hour == element.startTime">
+      <span *ngFor="let element of schedules">
+        <span *ngIf="hour == formatHour(element.startTime)">
           {{ element.clientName }}
         </span>
       </span>
-      <span *ngIf="setReserved(hour, elements) === false">
+      <span *ngIf="setReserved(formatHour(hour), schedules) === false">
         <button style="border: none; border-radius: 7px; background-color: rgb(65, 65, 201);height: 15px; width: 100%; margin-left: 20px;"></button>
       </span>
 
@@ -43,12 +51,12 @@
   <ng-container matColumnDef="service">
     <th mat-header-cell *matHeaderCellDef class="text-center"> Seviço </th>
     <td mat-cell *matCellDef="let hour" class="text-center">
-      <span *ngFor="let element of elements">
-        <span *ngIf="hour === element.startTime">
+      <span *ngFor="let element of schedules">
+        <span *ngIf="hour === formatHour(element.startTime)">
           {{ element.serviceBooked }}
         </span>
       </span>
-      <span *ngIf="setReserved(hour, elements) === false">
+      <span *ngIf="setReserved(formatHour(hour), schedules) === false">
         <button style="border: none; border-radius: 7px; background-color: rgb(65, 65, 201);height: 15px; width: 100%"></button>
       </span>
 
@@ -60,17 +68,17 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef class="text-center"> Ação </th>
       <td mat-cell *matCellDef="let hour" class="text-center">
-        <span *ngFor="let element of elements">
-          <span *ngIf="hour === element.startTime">
+        <span *ngFor="let element of schedules">
+          <span *ngIf="hour === formatHour(element.startTime)">
             <button mat-flat-button color="primary" class="m-lg-2" >Editar</button>
             <button mat-flat-button color="warn" >Excluir</button>
           </span>
 
         </span>
-        <span *ngIf="isFree(hour, elements)">
+        <span *ngIf="isFree(hour, schedules)">
           <button  mat-flat-button color="accent" class="m-lg-2">Agendar</button>
         </span>
-        <span *ngIf="setReserved(hour, elements) === false">
+        <span *ngIf="setReserved(hour, schedules) === false">
           <p>Horário Reservado</p>
         </span>
 
