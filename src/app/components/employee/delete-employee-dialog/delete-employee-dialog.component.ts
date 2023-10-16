@@ -2,14 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Employee } from 'src/app/@core/models/employee.model';
 import { EmployeeService } from 'src/app/@core/services/employee.service';
 
 
-export interface Employee {
-  id: number,
-  name: string,
-  role: string
-}
 
 @Component({
   selector: 'app-delete-employee-dialog',

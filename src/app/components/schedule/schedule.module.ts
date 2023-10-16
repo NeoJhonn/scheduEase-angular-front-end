@@ -5,6 +5,8 @@ import { ScheduleRoutingModule } from './schedule.routing.modules';
 import { DesignImportsModule } from 'src/app/shared/design-imports/design-imports.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CreateAppointmentDialogModule } from './create-appointment-dialog/create-appointment-dialog.module';
+
 
 
 
@@ -17,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     ScheduleRoutingModule,
     HttpClientModule,
     DesignImportsModule,
-    FormsModule
+    FormsModule,
+    CreateAppointmentDialogModule
   ]
 })
 export class ScheduleModule { }

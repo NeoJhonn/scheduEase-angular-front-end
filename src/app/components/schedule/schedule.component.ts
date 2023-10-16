@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Schedule } from 'src/app/@core/models/schedule.model';
 import { ScheduleService } from 'src/app/@core/services/schedule.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateAppointmentDialogComponent } from './create-appointment-dialog/create-appointment-dialog.component';
+
 
 
 @Component({
@@ -21,12 +24,12 @@ export class ScheduleComponent implements OnInit {
   datepickerFormat: string = 'yyyy-MM-dd';
   date: string = '';
 
-  constructor(private service: ScheduleService, private router: Router) {
+  constructor(private service: ScheduleService, private router: Router, public dialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
-    console.log('Testando formatação: '+this.formatHour('17:30'))
+
 
   }
 
@@ -37,6 +40,12 @@ export class ScheduleComponent implements OnInit {
       this.schedules = data;
       console.log(data);
     });
+  }
+
+  // Agenda um horário
+  createAppointment() {
+    // Pega os atributos do elemento e injeta na caixa de diálogo
+    this.dialog.open(CreateAppointmentDialogComponent);
   }
 
   formatHour(hour: string): string {

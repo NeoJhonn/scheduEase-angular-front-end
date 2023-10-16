@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>Agendar horário</h1>
+<div mat-dialog-content>
+
+   <!-- chamar  o formulário de create  Appointment -->
+   <form [formGroup]="formAppointment" class="row" (submit)="createAppointment()">
+    <!-- formControlName = algum atributo que foi construído para o formulário  -->
+    <mat-form-field class="col-sm-12">
+        <mat-label for="clientName">Nome do Cliente:</mat-label>
+        <input matInput type="text" formControlName="clientName" id="clientName" [required]="true">
+    </mat-form-field>
+
+    <mat-form-field class="col-sm-12">
+      <mat-label for="employeeId">Id do Profissional:</mat-label>
+      <input matInput type="number" formControlName="employeeId" id="employeeId" [required]="true">
+    </mat-form-field>
+
+    <mat-form-field class="col-sm-12">
+      <mat-label for="serviceBooked">Serviço:</mat-label>
+      <input matInput type="text" formControlName="serviceBooked" id="serviceBooked" [required]="true">
+    </mat-form-field>
+
+    <mat-form-field class="col-sm-12">
+      <mat-label for="appointmentDate">Data:</mat-label>
+      <input matInput type="date" formControlName="appointmentDate" id="appointmentDate" [required]="true">
+    </mat-form-field>
+
+    <mat-form-field class="col-sm-12">
+      <mat-label for="startTime">Horário Início:</mat-label>
+      <mat-select formControlName="startTime" [required]="true">
+          <mat-option value="">Selecione um Cargo</mat-option>
+          <!-- diretiva *ngFor percorre o array de tiposnp e popula o <option> -->
+          <mat-option *ngFor="let hour of timeGrid" [value]="hour">{{ hour}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+
+    <mat-form-field class="col-sm-12">
+        <mat-label for="endTime">Horário Fim:</mat-label>
+        <mat-select formControlName="endTime" [required]="true">
+            <mat-option value="">Selecione um Cargo</mat-option>
+            <!-- diretiva *ngFor percorre o array de tiposnp e popula o <option> -->
+            <mat-option *ngFor="let hour of timeGrid" [value]="hour">{{ hour}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- Componente Button do Angular Material -->
+    <div class="col-sm-12">
+      <button mat-raised-button color="warn" class="m-lg-2" (click)="createAppointment()">Agendar</button>
+      <button mat-raised-button color="primary" (click)="closeDialog()">Cancelar</button>
+    </div>
+</form>
+  
+      
+    
+</div>
