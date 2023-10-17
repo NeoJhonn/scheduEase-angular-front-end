@@ -23,7 +23,7 @@
     <mat-form-field class="col-sm-12">
         <mat-label for="endTime">Horário Fim:</mat-label>
         <mat-select formControlName="endTime" [required]="true">
-            <mat-option value="">Selecione um Cargo</mat-option>
+            <mat-option value="">Selecione um horário fim</mat-option>
             <!-- diretiva *ngFor percorre o array de tiposnp e popula o <option> -->
             <mat-option *ngFor="let hour of timeGrid" [value]="formatHour(hour)">{{ hour }}</mat-option>
         </mat-select>

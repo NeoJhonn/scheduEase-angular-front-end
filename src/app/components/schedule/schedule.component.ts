@@ -89,13 +89,18 @@ export class ScheduleComponent implements OnInit {
 
     // Pegar o elemento que tem um horário da vez do loop
     for (let el of elements) {
-      if (this.timeGrid.indexOf(hour) >= this.timeGrid.indexOf(this.formatHour(el.startTime))) {
+      if (this.timeGrid.indexOf(hour) >= this.timeGrid.indexOf(this.formatHour(el.startTime)) 
+      && this.timeGrid.indexOf(hour) <= this.timeGrid.indexOf(this.formatHour(el.endTime))) {
         // pegas os dois index do intevalo de hora marcada
         indexS = this.timeGrid.indexOf(this.formatHour(el.startTime));
         indexE = this.timeGrid.indexOf(this.formatHour(el.endTime));
 
       }
     }
+    
+      console.log( hour+" / "+indexS+" / "+indexE)
+      
+    
 
     if (indexE === -1 && indexS === -1) {
       isFree = true;
@@ -134,7 +139,8 @@ export class ScheduleComponent implements OnInit {
 
     // Pegar o elemento que tem um horário da vez do loop
     for (let el of elements) {
-      if (this.timeGrid.indexOf(hour) >= this.timeGrid.indexOf(this.formatHour(el.startTime))) {
+      if (this.timeGrid.indexOf(hour) > this.timeGrid.indexOf(this.formatHour(el.startTime))
+      && this.timeGrid.indexOf(hour) <= this.timeGrid.indexOf(this.formatHour(el.endTime))) {
         // pegas os dois index do intevalo de hora marcada
         indexS = this.timeGrid.indexOf(this.formatHour(el.startTime))+1;
         indexE = this.timeGrid.indexOf(this.formatHour(el.endTime));

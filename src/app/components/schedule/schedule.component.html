@@ -72,7 +72,7 @@
 
         </span>
         <span *ngIf="isFree(hour, schedules)">
-    <button  mat-flat-button color="accent" class="m-lg-2" (click)="createAppointment(hour)">Agendar</button>
+          <button  mat-flat-button color="accent" class="m-lg-2" (click)="createAppointment(hour)">Agendar</button>
         </span>
         <span *ngIf="setReserved(hour, schedules) === false">
           <p>Horário Reservado</p>
