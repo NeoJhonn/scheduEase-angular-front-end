@@ -32,6 +32,10 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (this.appointmentDate === '') {
+      
+      this.listAppointments();
+    }
     // if (this.appointmentDate !== '')
     // this.route.params.subscribe(params => {
     //   this.appointmentDate = params['appointmentDate'];
@@ -40,7 +44,7 @@ export class ScheduleComponent implements OnInit {
 
   // Lista os funcionário cadastrados
   listAppointments() : void {
-
+    //console.log(this.appointmentDate)
     this.service.listAppointments(this.formatDate(this.appointmentDate), this.employeeId).subscribe((data) => {
       this.schedules = data;
     });

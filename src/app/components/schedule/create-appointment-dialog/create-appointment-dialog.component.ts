@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { time } from 'console';
 import { Schedule } from 'src/app/@core/models/schedule.model';
 import { ScheduleService } from 'src/app/@core/services/schedule.service';
 
@@ -44,8 +45,14 @@ export class CreateAppointmentDialogComponent implements OnInit {
   }
 
   createAppointment(): void {
+    // Validar se o horário selecionado é válido
+    if (this.timeGrid.indexOf(this.formAppointment.value.endTime) >= this.timeGrid.indexOf(this.formAppointment.value.startTime)) {
     this.service.createAppointment(this.formAppointment.value);
+    window.location.href = '/schedule'
     this.closeDialog();
+  } else {
+    alert("Selecine um horário de fim válido!")
+  }
   }
 
   formatHour(hour: String): String {
