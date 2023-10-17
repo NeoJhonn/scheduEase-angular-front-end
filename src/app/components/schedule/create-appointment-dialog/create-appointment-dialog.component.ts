@@ -18,8 +18,9 @@ export class CreateAppointmentDialogComponent implements OnInit {
   '22:00']
   public formAppointment: FormGroup;
 
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: Schedule, public dialogRef: MatDialogRef<CreateAppointmentDialogComponent>,
-  private router: Router, private http: HttpClient, private service: ScheduleService, private formBuilder: FormBuilder) { 
+  private router: Router, private http: HttpClient, private service: ScheduleService, private formBuilder: FormBuilder) {
     // 1- chamar o atributo do formulário
     // 2- construir os atributos do formulário
     this.formAppointment = this.formBuilder.group({
@@ -34,6 +35,7 @@ export class CreateAppointmentDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   // Fecha a caixa de diálogo
@@ -42,9 +44,18 @@ export class CreateAppointmentDialogComponent implements OnInit {
   }
 
   createAppointment(): void {
-    //this.service.createAppointment();
+    this.service.createAppointment(this.formAppointment.value);
     this.closeDialog();
   }
 
+  formatHour(hour: String): String {
+    if (hour.includes('_')){
+     return hour = hour.replace('H_', '').replace('_', ':');
+    } else {
+      hour = hour.replace(':', '_');
+      hour = 'H_'+ hour
+      return hour;
+    }
+  }
 
 }

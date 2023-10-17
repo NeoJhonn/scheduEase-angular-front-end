@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Schedule } from 'src/app/@core/models/schedule.model';
 import { ScheduleService } from 'src/app/@core/services/schedule.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAppointmentDialogComponent } from './create-appointment-dialog/create-appointment-dialog.component';
 
@@ -20,32 +20,44 @@ export class ScheduleComponent implements OnInit {
   displayedColumns: string[] = ['time', 'name', 'service', 'action'];
   dataSource = this.timeGrid;
   public schedules: Schedule[] = [];
-  // Formato desejado para o matDatepicker.
-  datepickerFormat: string = 'yyyy-MM-dd';
-  date: string = '';
+  appointmentDate: string = '';
+  employeeId: number = 1;
+  startTime: string = '';
 
-  constructor(private service: ScheduleService, private router: Router, public dialog: MatDialog) {
+
+  constructor(private service: ScheduleService, private router: Router, public dialog: MatDialog,
+    private route: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
 
-
+    // if (this.appointmentDate !== '')
+    // this.route.params.subscribe(params => {
+    //   this.appointmentDate = params['appointmentDate'];
+    // });
   }
 
   // Lista os funcionário cadastrados
-  listAppointments(employeeId: number) : void {
-    console.log(this.date);
-    this.service.listAppointments(this.formatDate(this.date), employeeId).subscribe((data) => {
+  listAppointments() : void {
+
+    this.service.listAppointments(this.formatDate(this.appointmentDate), this.employeeId).subscribe((data) => {
       this.schedules = data;
-      console.log(data);
     });
   }
 
   // Agenda um horário
-  createAppointment() {
+  createAppointment(hour: string) {
+    this.startTime = this.formatHour(hour);
     // Pega os atributos do elemento e injeta na caixa de diálogo
-    this.dialog.open(CreateAppointmentDialogComponent);
+    this.dialog.open(CreateAppointmentDialogComponent, {
+      width: '400px',
+      data: {
+        appointmentDate: this.formatDate(this.appointmentDate),
+        employeeId: this.employeeId,
+        startTime: this.startTime
+      },
+    });
   }
 
   formatHour(hour: string): string {

@@ -6,10 +6,7 @@
         <!-- chamar  o formulário de create  Employee -->
         <form [formGroup]="formEmployee" class="row" (submit)="updateEmployee()">
             <!-- Id do funcionário -->
-            <mat-form-field class="col-sm-12">
-              <mat-label for="id">Id:</mat-label>
-              <input matInput type="text" formControlName="id" id="id" [(ngModel)]="employeeId" [readonly]="true">
-            </mat-form-field>
+            <input matInput type="text" formControlName="id" id="id" [(ngModel)]="employeeId" hidden="true">
 
             <!-- formControlName = algum atributo que foi construído para o formulário  -->
             <mat-form-field class="col-sm-12">

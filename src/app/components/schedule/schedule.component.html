@@ -3,7 +3,7 @@
 <!-- DatePicker -->
 <mat-form-field class="d-flex justify-content-center">
   <mat-label>Selecione uma Data</mat-label>
-  <input matInput [matDatepicker]="picker" [(ngModel)]="date" (dateChange)="listAppointments(1)">
+  <input matInput [matDatepicker]="picker" [(ngModel)]="appointmentDate" (dateChange)="listAppointments()">
   <mat-hint>Mês/Dia/Ano</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
@@ -72,7 +72,7 @@
 
         </span>
         <span *ngIf="isFree(hour, schedules)">
-    <button  mat-flat-button color="accent" class="m-lg-2" (click)="createAppointment()">Agendar</button>
+    <button  mat-flat-button color="accent" class="m-lg-2" (click)="createAppointment(hour)">Agendar</button>
         </span>
         <span *ngIf="setReserved(hour, schedules) === false">
           <p>Horário Reservado</p>

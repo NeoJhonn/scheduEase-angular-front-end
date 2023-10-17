@@ -21,6 +21,23 @@ listAppointments(date: string, employeeId: number): Observable<Schedule[]> {
   return this.http.get<Schedule[]>(`${this.apiUrl}/list-appointments?appointmentDate=${date}&id=${employeeId}`);
 }
 
+createAppointment(schedule: Schedule): void {
+  this.http.post(this.apiUrl, schedule)
+      .subscribe({
+        next: (response) => {
+          console.log('Horário agendado com sucesso:', response);
+          // Redirecionar para a página Agenda após o agendamento
+          const param = {
+            appointmentDate: schedule.appointmentDate
+          }
+          this.router.navigate(['schedule', param]);
+        },
+        error: (error) => {
+          console.error('Erro ao agendar horário:', error);
+        }
+      });
+}
+
 
 
 }
