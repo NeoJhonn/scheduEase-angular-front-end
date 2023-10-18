@@ -67,7 +67,7 @@
         <span *ngFor="let element of schedules">
           <span *ngIf="hour === formatHour(element.startTime)">
             <button mat-flat-button color="primary" class="m-lg-2" >Editar</button>
-            <button mat-flat-button color="warn" >Excluir</button>
+            <button mat-flat-button color="warn" (click)="deleteAppointment(element)">Excluir</button>
           </span>
 
         </span>

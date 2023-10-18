@@ -14,8 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     DesignImportsModule,
     ReactiveFormsModule,
-    FormsModule,
-    DesignImportsModule
+    FormsModule
   ]
 })
 export class CreateAppointmentDialogModule { }

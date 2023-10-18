@@ -6,6 +6,8 @@ import { DesignImportsModule } from 'src/app/shared/design-imports/design-import
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CreateAppointmentDialogModule } from './create-appointment-dialog/create-appointment-dialog.module';
+import { DeleteAppointmentDialogModule } from './delete-appointment-dialog/delete-appointment-dialog.module';
+import { UpdateAppointmentDialogModule } from './update-appointment-dialog/update-appointment-dialog.module';
 
 
 
@@ -20,7 +22,9 @@ import { CreateAppointmentDialogModule } from './create-appointment-dialog/creat
     HttpClientModule,
     DesignImportsModule,
     FormsModule,
-    CreateAppointmentDialogModule
+    CreateAppointmentDialogModule,
+    DeleteAppointmentDialogModule,
+    UpdateAppointmentDialogModule
   ]
 })
 export class ScheduleModule { }

@@ -54,7 +54,7 @@ export class EmployeeComponent implements OnInit {
   openDialog(element: Employee): void {
     // Pega os atributos do elemento e injeta na caixa de diálogo
     this.dialog.open(DeleteEmployeeDialogComponent, {
-
+      width: '400px',
       data: {
         id: element.id,
         name: element.name,

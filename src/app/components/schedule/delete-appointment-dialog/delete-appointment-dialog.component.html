@@ -1,0 +1,24 @@
+<h1 mat-dialog-title class="text-dark-emphasis">Excluir Horário?</h1>
+<div mat-dialog-content class="d-flex">
+  <ul>
+    <li>
+      Cliente: {{data.clientName}}
+    </li>
+    <li>
+      Serviço: {{data.serviceBooked}}
+    </li>
+    <li>
+      Data: {{data.appointmentDate}}
+    </li>
+    <li>
+      Horário Início: {{formatHour(data.startTime)}}
+    </li>
+    <li>
+      Horário fim: {{formatHour(data.endTime)}}
+    </li>
+    <li>
+      <button mat-raised-button color="warn" class="m-lg-2" (click)="deleteAppointment(data.id)">Excluir</button>
+      <button mat-raised-button color="primary" (click)="closeDialog()">Cancelar</button>
+    </li>
+  </ul>
+</div>

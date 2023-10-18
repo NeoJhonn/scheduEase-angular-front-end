@@ -38,6 +38,32 @@ createAppointment(schedule: Schedule): void {
       });
 }
 
+updateAppointment(schedule: Schedule): void {
+  this.http.put(this.apiUrl, schedule).subscribe({
+    next: (response) => {
+      console.log('Horário atualizado com sucesso:', response);
+      // Redirecionar para a Agenda
+      //this.router.navigate(['/schedule']);
+      // Atualiza a página de funcionários
+      window.location.href = '/schedule';
+    },
+    error: (error) => {
+      console.error('Erro ao atualizar Horário:', error);
+    }
+  });
+}
 
+deleteAppointment(id: number): void {
+  this.http.delete(`${this.apiUrl}/${id}`).subscribe({
+    next: (response) => {
+      console.log('Horário excluído com sucesso:', response);
+      // Atualiza a página de funcionários
+      window.location.href = '/schedule';
+    },
+    error: (error) => {
+      console.error('Erro ao excluir o Horário:', error);
+    }
+  });
+}
 
 }

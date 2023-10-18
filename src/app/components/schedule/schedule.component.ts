@@ -4,6 +4,7 @@ import { ScheduleService } from 'src/app/@core/services/schedule.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAppointmentDialogComponent } from './create-appointment-dialog/create-appointment-dialog.component';
+import { DeleteAppointmentDialogComponent } from './delete-appointment-dialog/delete-appointment-dialog.component';
 
 
 
@@ -33,7 +34,7 @@ export class ScheduleComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.appointmentDate === '') {
-      
+
       this.listAppointments();
     }
     // if (this.appointmentDate !== '')
@@ -60,6 +61,23 @@ export class ScheduleComponent implements OnInit {
         appointmentDate: this.formatDate(this.appointmentDate),
         employeeId: this.employeeId,
         startTime: this.startTime
+      },
+    });
+  }
+
+  // Abri caixa de diálogo
+  deleteAppointment(element: Schedule): void {
+    // Pega os atributos do elemento e injeta na caixa de diálogo
+    this.dialog.open(DeleteAppointmentDialogComponent, {
+      width: '400px',
+      data: {
+        id: element.id,
+        clientName: element.clientName,
+        employeeId: element.employeeId,
+        serviceBooked: element.serviceBooked,
+        appointmentDate: element.appointmentDate,
+        startTime: element.startTime,
+        endTime: element.endTime
       },
     });
   }
@@ -93,7 +111,7 @@ export class ScheduleComponent implements OnInit {
 
     // Pegar o elemento que tem um horário da vez do loop
     for (let el of elements) {
-      if (this.timeGrid.indexOf(hour) >= this.timeGrid.indexOf(this.formatHour(el.startTime)) 
+      if (this.timeGrid.indexOf(hour) >= this.timeGrid.indexOf(this.formatHour(el.startTime))
       && this.timeGrid.indexOf(hour) <= this.timeGrid.indexOf(this.formatHour(el.endTime))) {
         // pegas os dois index do intevalo de hora marcada
         indexS = this.timeGrid.indexOf(this.formatHour(el.startTime));
@@ -101,10 +119,10 @@ export class ScheduleComponent implements OnInit {
 
       }
     }
-    
+
       console.log( hour+" / "+indexS+" / "+indexE)
-      
-    
+
+
 
     if (indexE === -1 && indexS === -1) {
       isFree = true;
