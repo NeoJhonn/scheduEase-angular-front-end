@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateAppointmentDialogComponent } from './create-appointment-dialog/create-appointment-dialog.component';
 import { DeleteAppointmentDialogComponent } from './delete-appointment-dialog/delete-appointment-dialog.component';
+import { UpdateAppointmentDialogComponent } from './update-appointment-dialog/update-appointment-dialog.component';
 
 
 
@@ -60,7 +61,7 @@ export class ScheduleComponent implements OnInit {
       data: {
         appointmentDate: this.formatDate(this.appointmentDate),
         employeeId: this.employeeId,
-        startTime: this.startTime
+        startTime: this.formatHour(this.startTime)
       },
     });
   }
@@ -69,6 +70,23 @@ export class ScheduleComponent implements OnInit {
   deleteAppointment(element: Schedule): void {
     // Pega os atributos do elemento e injeta na caixa de diálogo
     this.dialog.open(DeleteAppointmentDialogComponent, {
+      width: '400px',
+      data: {
+        id: element.id,
+        clientName: element.clientName,
+        employeeId: element.employeeId,
+        serviceBooked: element.serviceBooked,
+        appointmentDate: element.appointmentDate,
+        startTime: element.startTime,
+        endTime: element.endTime
+      },
+    });
+  }
+
+  // Abri caixa de diálogo
+  updateAppointment(element: Schedule): void {
+    // Pega os atributos do elemento e injeta na caixa de diálogo
+    this.dialog.open(UpdateAppointmentDialogComponent, {
       width: '400px',
       data: {
         id: element.id,

@@ -18,7 +18,7 @@
 
     <input matInput type="text"  [ngModel]="data.appointmentDate" formControlName="appointmentDate" id="appointmentDate" [required]="true" hidden="true">
 
-    <input matInput type="text"  [ngModel]="data.startTime" formControlName="startTime" id="startTime" [required]="true" hidden="true">
+    <input matInput type="text"  [ngModel]="formatHour(data.startTime)" formControlName="startTime" id="startTime" [required]="true" hidden="true">
 
     <mat-form-field class="col-sm-12">
         <mat-label for="endTime">Horário Fim:</mat-label>

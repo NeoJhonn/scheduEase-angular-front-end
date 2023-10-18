@@ -1,1 +1,43 @@
-<p>update-appointment-dialog works!</p>
+<h1 mat-dialog-title class="text-dark-emphasis">Atualizar horário</h1>
+<div mat-dialog-content>
+
+   <!-- chamar  o formulário de create  Appointment -->
+   <form [formGroup]="formAppointment" class="row">
+    <!-- formControlName = algum atributo que foi construído para o formulário  -->
+    <input matInput type="id" [ngModel]="data.id" formControlName="id" id="id" [required]="true" hidden="true">
+
+    <mat-form-field class="col-sm-12">
+        <mat-label for="clientName">Nome do Cliente:</mat-label>
+        <input matInput type="text" formControlName="clientName" id="clientName" [ngModel]="data.clientName" [required]="true">
+    </mat-form-field>
+
+    <input matInput type="number" [ngModel]="data.employeeId" formControlName="employeeId" id="employeeId" [required]="true" hidden="true">
+
+    <mat-form-field class="col-sm-12">
+      <mat-label for="serviceBooked">Serviço:</mat-label>
+      <input matInput type="text" formControlName="serviceBooked" id="serviceBooked" [ngModel]="data.serviceBooked" [required]="true">
+    </mat-form-field>
+
+    <input matInput type="text"  [ngModel]="data.appointmentDate" formControlName="appointmentDate" id="appointmentDate" [required]="true" hidden="true">
+
+    <input matInput type="text"  [ngModel]="data.startTime" formControlName="startTime" id="startTime" [required]="true" hidden="true">
+
+    <mat-form-field class="col-sm-12">
+        <mat-label for="endTime">Horário Fim:</mat-label>
+        <mat-select formControlName="endTime" [required]="true" [ngModel]="formatHour(data.endTime)">
+            <mat-option value="">Selecione um horário fim</mat-option>
+            <!-- diretiva *ngFor percorre o array de tiposnp e popula o <option> -->
+            <mat-option *ngFor="let hour of timeGrid" [value]="formatHour(hour)">{{ hour }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- Componente Button do Angular Material -->
+    <div class="col-sm-8">
+      <button mat-raised-button color="primary" class="m-lg-2" (click)="updateAppointment()">Atualizar</button>
+      <button mat-raised-button color="warn" (click)="closeDialog()">Cancelar</button>
+    </div>
+</form>
+
+
+
+</div>
