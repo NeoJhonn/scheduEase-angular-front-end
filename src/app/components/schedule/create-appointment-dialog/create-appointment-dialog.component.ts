@@ -45,7 +45,7 @@ export class CreateAppointmentDialogComponent implements OnInit {
 
   createAppointment(): void {
     // Validar se o horário selecionado é válido
-    if (this.timeGrid.indexOf(this.formAppointment.value.endTime) >= this.timeGrid.indexOf(this.formAppointment.value.startTime)) {
+    if (this.timeGrid.indexOf(this.formatHour(this.formAppointment.value.endTime)) >= this.timeGrid.indexOf(this.formatHour(this.formAppointment.value.startTime))) {
     this.service.createAppointment(this.formAppointment.value);
     window.location.href = '/schedule'
     this.closeDialog();

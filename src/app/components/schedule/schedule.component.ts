@@ -35,13 +35,20 @@ export class ScheduleComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.appointmentDate === '') {
+      this.route.queryParams.subscribe(params => {
+        this.appointmentDate = params['appointmentDate'];
+    
+        this.listAppointments();
+      });
+      
+      
+       console.log('Testando data= '+this.appointmentDate)
+     
 
-      this.listAppointments();
-    }
-    // if (this.appointmentDate !== '')
-    // this.route.params.subscribe(params => {
-    //   this.appointmentDate = params['appointmentDate'];
-    // });
+  //     
+    
+  }
+    
   }
 
   // Lista os funcionário cadastrados
@@ -54,14 +61,13 @@ export class ScheduleComponent implements OnInit {
 
   // Agenda um horário
   createAppointment(hour: string) {
-    this.startTime = this.formatHour(hour);
     // Pega os atributos do elemento e injeta na caixa de diálogo
     this.dialog.open(CreateAppointmentDialogComponent, {
       width: '400px',
       data: {
         appointmentDate: this.formatDate(this.appointmentDate),
         employeeId: this.employeeId,
-        startTime: this.formatHour(this.startTime)
+        startTime: this.formatHour(hour)
       },
     });
   }
@@ -137,11 +143,7 @@ export class ScheduleComponent implements OnInit {
 
       }
     }
-
-      console.log( hour+" / "+indexS+" / "+indexE)
-
-
-
+    
     if (indexE === -1 && indexS === -1) {
       isFree = true;
     } else {

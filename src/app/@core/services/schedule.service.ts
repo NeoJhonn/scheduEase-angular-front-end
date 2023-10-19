@@ -27,10 +27,13 @@ createAppointment(schedule: Schedule): void {
         next: (response) => {
           console.log('Horário agendado com sucesso:', response);
           // Redirecionar para a página Agenda após o agendamento
-          const param = {
-            appointmentDate: schedule.appointmentDate
+          const params = {
+            appointmentDate: schedule.appointmentDate,
+            employeeId: schedule.employeeId
           }
-          this.router.navigate(['schedule', param]);
+          //this.router.navigate(['schedule', params]);
+          window.location.href = '/schedule?appointmentDate='+schedule.appointmentDate.replace(' 00:00:00.0', '')+ 
+          '&employeeId='+ schedule.employeeId
         },
         error: (error) => {
           console.error('Erro ao agendar horário:', error);
@@ -45,7 +48,7 @@ updateAppointment(schedule: Schedule): void {
       // Redirecionar para a Agenda
       //this.router.navigate(['/schedule']);
       // Atualiza a página de funcionários
-      window.location.href = '/schedule';
+      window.location.href = '/schedule?appointmentDate='+schedule.appointmentDate
     },
     error: (error) => {
       console.error('Erro ao atualizar Horário:', error);
