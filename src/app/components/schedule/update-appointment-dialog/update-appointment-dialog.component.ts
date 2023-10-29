@@ -5,7 +5,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Schedule } from 'src/app/@core/models/schedule.model';
 import { ScheduleService } from 'src/app/@core/services/schedule.service';
-import { DeleteAppointmentDialogComponent } from '../delete-appointment-dialog/delete-appointment-dialog.component';
 
 @Component({
   selector: 'app-update-appointment-dialog',
@@ -19,7 +18,7 @@ export class UpdateAppointmentDialogComponent implements OnInit {
   '22:00']
   public formAppointment: FormGroup;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Schedule, public dialogRef: MatDialogRef<DeleteAppointmentDialogComponent>,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Schedule, public dialogRef: MatDialogRef<UpdateAppointmentDialogComponent>,
   private router: Router, private http: HttpClient, private service: ScheduleService, private formBuilder: FormBuilder) {
     // 1- chamar o atributo do formulário
     // 2- construir os atributos do formulário

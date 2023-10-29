@@ -37,18 +37,18 @@ export class ScheduleComponent implements OnInit {
     if (this.appointmentDate === '') {
       this.route.queryParams.subscribe(params => {
         this.appointmentDate = params['appointmentDate'];
-    
+
         this.listAppointments();
       });
-      
-      
-       console.log('Testando data= '+this.appointmentDate)
-     
 
-  //     
-    
+
+       console.log('Testando data= '+this.appointmentDate)
+
+
+  //
+
   }
-    
+
   }
 
   // Lista os funcionário cadastrados
@@ -143,7 +143,7 @@ export class ScheduleComponent implements OnInit {
 
       }
     }
-    
+
     if (indexE === -1 && indexS === -1) {
       isFree = true;
     } else {
